@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+:root {
+  --color-fondo: #ffe1f3;
+  --color-rosa-suave: #f5bdf9;
+  --color-lila-suave: #fff8b5;
+  --color-acento: #ff65c3;
+  --color-texto: #333333;
+  --color-blanco: #ffccee;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  display: flex;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 100vh;
+  background-color: var(--color-lila-suave);
+  padding: 2rem 1rem;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+  overflow-y: auto;
+  z-index: 100;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 2rem;
+}
+
+.logo-img {
+  width: 40px;
+}
+
+.logo-text {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-acento);
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li {
+  margin: 1rem 0;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: var(--color-texto);
+  font-weight: 500;
+  display: block;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+nav ul li a.active,
+nav ul li a:hover {
+  background-color: var(--color-rosa-suave);
+  color: var(--color-acento);
+}
+
+/* Main content */
+.main-content {
+  margin-left: 220px;
+  padding: 2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.titulo-horario {
+  font-size: 2rem;
+  color: var(--color-acento);
+  margin-bottom: 2rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.horario-caja {
+  background: linear-gradient(135deg, var(--color-lila-suave), var(--color-rosa-suave));
+  border-radius: 20px;
+  padding: 2rem;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 6px 20px rgba(255, 101, 195, 0.25);
+  text-align: center;
+}
+
+.mensaje-bienvenida {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: #444;
+}
+
+.horario-info {
+  background-color: white;
+  padding: 1rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1.5rem;
+}
+
+.horario-info p {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+}
+
+.nota {
+  font-size: 0.95rem;
+  color: #555;
+  font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+    padding: 1rem;
+  }
+
+  .horario-caja {
+    padding: 1.5rem;
+  }
+}

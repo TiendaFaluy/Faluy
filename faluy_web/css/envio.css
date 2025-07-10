@@ -1,0 +1,271 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+:root {
+  --color-fondo: #ffe1f3;
+  --color-rosa-suave: #f5bdf9;
+  --color-lila-suave: #fff8b5;
+  --color-acento: #ff65c3;
+  --color-texto: #333333;
+  --color-blanco: #ffccee;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--color-fondo);
+  color: var(--color-acento);
+  margin: 0;
+  display: flex;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Sidebar fijo a la izquierda */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 100vh;
+  background-color: var(--color-lila-suave);
+  padding: 2rem 1rem;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+  overflow-y: auto;
+  z-index: 100;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 2rem;
+}
+
+.logo-img {
+  width: 40px;
+  height: auto;
+}
+
+.logo-text {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-acento);
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li {
+  margin: 1rem 0;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: var(--color-acento);
+  font-weight: 500;
+  display: block;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+nav ul li a.active,
+nav ul li a:hover {
+  background-color: var(--color-rosa-suave);
+  color: var(--color-acento);
+}
+
+/* Main content con margen izquierdo para evitar que quede detrás del sidebar */
+.main-content {
+  margin-left: 220px;
+  padding: 2rem;
+  flex: 1;
+  background-color: var(--color-fondo);
+}
+
+/* Banner imagen */
+.banner {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Sección info método de envío */
+.envio-info {
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-texto);
+}
+
+/* Contenedor para las dos cajas de sucursales lado a lado */
+.sucursales-container {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: nowrap;
+  margin-bottom: 3rem;
+}
+
+/* Estilo armonioso para cada caja de sucursal (Ferguson y Uno Express) */
+.sucursal-lista {
+background: linear-gradient(135deg, var(--color-lila-suave), var(--color-rosa-suave));
+  border-radius: 20px;
+  padding: 2rem;
+  max-width: 900px;
+  width: 100%;
+  box-shadow: 0 6px 20px rgba(255, 101, 195, 0.25);
+  text-align: center;
+}
+
+.sucursal-lista:hover {
+  background: linear-gradient(135deg, var(--color-lila-suave), var(--color-rosa-suave));
+  border-radius: 20px;
+  padding: 2rem;
+  max-width: 900px;
+  width: 100%;
+  box-shadow: 0 6px 20px rgba(255, 101, 195, 0.25);
+  text-align: center;
+}
+
+/* Títulos h3 dentro de sucursales */
+.sucursal-lista h3 {
+  color: var(--color-acento);
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Listas dentro de cada caja */
+.sucursal-lista ul {
+  list-style: none;
+  padding-left: 0;
+  width: 100%;
+}
+
+/* Contenedor de listas Uno Express en dos columnas */
+.sucursales-grid {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Cada columna de lista Uno Express */
+.sucursales-grid ul {
+  flex: 1;
+  list-style: none;
+  padding-left: 0;
+}
+
+/* Estilo para cada elemento de lista */
+.sucursal-lista ul li,
+.sucursales-grid ul li {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: var(--color-texto);
+  padding-left: 0.3rem;
+  border-left: 3px solid var(--color-rosa-suave);
+  transition: border-color 0.3s ease;
+  cursor: default;
+}
+
+.sucursal-lista ul li:hover,
+.sucursales-grid ul li:hover {
+  border-color: var(--color-acento);
+  color: var(--color-acento);
+}
+
+/* Imágenes uniformes para ambas sucursales */
+.sucursal-img {
+  width: 400x;
+  height: 200px;
+  border-radius: 10px;
+  object-fit: contain;
+  box-shadow: 0 6px 15px rgba(255, 101, 195, 0.3);
+  margin-top: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.sucursal-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px var(--color-acento);
+}
+
+/* Sección retiro en sucursal centrada abajo */
+.retiro-sucursal {
+  background-color: var(--color-blanco);
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  max-width: 660px;
+  margin: 0 auto 3rem auto;
+  text-align: center;
+}
+
+.retiro-sucursal h3 {
+  color: var(--color-acento);
+  margin-bottom: 1rem;
+}
+
+.retiro-sucursal p {
+  font-size: 1rem;
+  line-height: 1.4;
+  color: var(--color-texto);
+  margin-bottom: 1rem;
+}
+
+.retiro-sucursal img {
+  width: 400px;
+  max-width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 6px 15px rgba(255, 101, 195, 0.3);
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 720px) {
+  .main-content {
+    margin-left: 0;
+    padding: 1rem;
+  }
+
+  .sucursales-container {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .sucursal-lista {
+    width: 100%;
+  }
+
+  .sucursal-img {
+    width: 100%;
+    height: auto;
+  }
+
+  .retiro-sucursal {
+    max-width: 100%;
+  }
+}
+
+

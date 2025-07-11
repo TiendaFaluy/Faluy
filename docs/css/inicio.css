@@ -22,7 +22,7 @@ body {
     background-color: var(--color-fondo);
     color: var(--color-texto);
     margin: 0;
-    display: flex; /* Para el layout de sidebar y main-content */
+    display: flex; /* Para el layout de sidebar y main-content en desktop */
     min-height: 100vh;
     overflow-x: hidden; /* Previene scroll horizontal no deseado */
 }
@@ -40,6 +40,7 @@ body {
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
     overflow-y: auto; /* Permite scroll si el contenido es largo */
     z-index: 100;
+    transition: transform 0.3s ease-in-out; /* Animación para el menú deslizante */
 }
 
 .logo-container {
@@ -206,8 +207,6 @@ nav ul li a:hover {
 .producto-detalles {
     flex: 1;
     font-size: 1rem;
-    /* Eliminar text-align: left; si el contenedor padre es center */
-    /* text-align: left; /* Si quieres que el texto quede alineado a la izquierda */
 }
 
 .producto-detalles h3 {
@@ -365,6 +364,98 @@ nav ul li a:hover {
     margin-top: 0.5rem;
 }
 
+
+/* --- Estilos para el botón de menú de hamburguesa y el overlay --- */
+.menu-toggle {
+    display: none; /* Oculto por defecto en escritorio */
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001; /* Mayor que la sidebar para que sea clicable */
+    width: 40px;
+    height: 40px;
+    background-color: var(--color-acento);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.menu-toggle:hover {
+    background-color: #ff40aa;
+}
+
+.hamburger {
+    position: relative;
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    border-radius: 3px;
+    transition: all 0.3s ease-in-out;
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    border-radius: 3px;
+    transition: all 0.3s ease-in-out;
+}
+
+.hamburger::before {
+    transform: translateY(-8px);
+}
+
+.hamburger::after {
+    transform: translateY(8px);
+}
+
+/* Animación para el icono de la hamburguesa a X */
+.menu-toggle.active .hamburger {
+    transform: translateX(-50px);
+    background: transparent;
+}
+
+.menu-toggle.active .hamburger::before {
+    transform: rotate(45deg) translate(35px, -35px);
+}
+
+.menu-toggle.active .hamburger::after {
+    transform: rotate(-45deg) translate(35px, 35px);
+}
+
+
+.overlay {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparente */
+    z-index: 99; /* Detrás de la sidebar abierta */
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Clases JS para mostrar/ocultar */
+body.menu-open {
+    overflow: hidden; /* Evita el scroll del contenido principal cuando el menú está abierto */
+}
+
+body.menu-open .overlay {
+    display: block;
+    opacity: 1;
+}
+
 /* --- Media Queries para Responsividad --- */
 
 /* Tabletas y pantallas medianas (hasta 900px) */
@@ -373,76 +464,86 @@ nav ul li a:hover {
         flex-direction: column; /* Apila el sidebar y el contenido principal */
     }
 
-    /* La sidebar se convierte en una barra superior */
+    /* La sidebar se oculta y se posiciona para deslizarse desde la izquierda */
     .sidebar {
-        position: static; /* Ya no es fija */
-        width: 100%; /* Ocupa todo el ancho */
-        height: auto; /* Altura automática */
-        padding: 1rem;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        display: flex;
-        flex-direction: column; /* Apilar logo y navegación */
-        align-items: center; /* Centrar contenido */
+        position: fixed; /* Ahora es fijo para poder deslizarse */
+        transform: translateX(-100%); /* Oculta la sidebar fuera de la pantalla */
+        left: 0;
+        top: 0;
+        height: 100vh;
+        width: 250px; /* Ancho del menú desplegado */
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+        z-index: 1000; /* Asegura que esté por encima del contenido */
+    }
+
+    /* Cuando el menú está abierto (clase añadida por JS) */
+    body.menu-open .sidebar {
+        transform: translateX(0); /* Desliza la sidebar a la vista */
+    }
+
+    /* Mostrar el botón de menú */
+    .menu-toggle {
+        display: flex; /* Mostrar el botón de hamburguesa */
     }
 
     .logo-container {
         margin-bottom: 1rem;
-        flex-direction: row; /* Mantener en fila para el logo y texto */
+        flex-direction: row;
         gap: 10px;
     }
     .logo-img {
-        width: 35px; /* Ligeramente más pequeño para móvil */
+        width: 35px;
     }
     .logo-text {
         font-size: 1.6rem;
     }
 
     .sidebar nav ul {
-        display: flex;
-        flex-wrap: wrap; /* Permitir que los ítems de navegación se envuelvan */
-        justify-content: center; /* Centrar ítems horizontalmente */
-        width: 100%; /* Asegurar que la lista ocupe el ancho completo */
-        gap: 0.5rem; /* Espacio entre los ítems de navegación */
+        flex-direction: column; /* Apila los elementos del menú */
+        align-items: flex-start; /* Alinea los ítems a la izquierda */
+        width: 100%;
+        gap: 0; /* Eliminar espacio entre ítems apilados */
     }
 
     .sidebar nav ul li {
-        margin: 0; /* Eliminar margen vertical */
+        margin: 0.5rem 0; /* Margen vertical para ítems apilados */
+        width: 100%; /* Ocupa todo el ancho */
     }
 
     .sidebar nav ul li a {
-        padding: 0.4rem 0.8rem; /* Ajustar padding */
-        font-size: 0.9rem; /* Ajustar tamaño de fuente */
-        white-space: nowrap; /* Evitar saltos de línea en los enlaces */
+        padding: 0.8rem 1rem; /* Ajustar padding para hacerlos más clicables */
+        font-size: 1rem;
+        white-space: normal; /* Permitir que el texto se envuelva si es muy largo */
     }
 
     .main-content {
-        margin-left: 0; /* No hay sidebar fija, así que no hay margen */
+        margin-left: 0; /* No hay sidebar fija empujando el contenido */
         padding: 1.5rem; /* Ajustar padding general */
     }
 
     /* Las columnas principales se apilan */
     .layout-3column {
         flex-direction: column;
-        gap: 1.5rem; /* Espacio entre las secciones apiladas */
+        gap: 1.5rem;
     }
 
     .mercancia-central,
     .info-lateral {
-        min-width: unset; /* Eliminar ancho mínimo */
-        width: 100%; /* Ocupa el 100% del ancho disponible */
+        min-width: unset;
+        width: 100%;
     }
 
     /* Las secciones de info lateral (Bazar, Falulover) se ponen en fila en tablets */
     .info-lateral {
         flex-direction: row;
         gap: 1.5rem;
-        flex-wrap: wrap; /* Si hay espacio se quedan en fila, si no, se envuelven */
+        flex-wrap: wrap;
     }
 
     .bazar-aside,
     .falulover-aside {
-        flex: 1; /* Distribuyen el espacio equitativamente */
-        min-width: 250px; /* Mínimo ancho para que no se compriman demasiado */
+        flex: 1;
+        min-width: 250px;
     }
 
     .product-card {
@@ -457,20 +558,19 @@ nav ul li a:hover {
     }
 
     .banner {
-        height: 200px; /* Reducir altura del banner */
+        height: 200px;
     }
 
-    /* El anuncio de WhatsApp se apila */
     .anuncio-wsp {
         flex-direction: column;
         align-items: center;
     }
     .anuncio-wsp p {
-        margin-bottom: 0.8rem; /* Espacio entre el texto y el botón */
+        margin-bottom: 0.8rem;
     }
     .anuncio-wsp a.boton-wsp {
-        margin-left: 0; /* Eliminar margen si se apila */
-        width: 80%; /* Hacer el botón un poco más ancho */
+        margin-left: 0;
+        width: 80%;
         text-align: center;
     }
 
@@ -478,13 +578,12 @@ nav ul li a:hover {
         font-size: 1.4rem;
     }
 
-    /* El producto destacado se apila */
     .producto-destacado {
         flex-direction: column;
     }
 
     .producto-semana-img {
-        width: 200px; /* Reducir tamaño de la imagen destacada */
+        width: 200px;
     }
 
     .producto-detalles h3 {
@@ -509,7 +608,7 @@ nav ul li a:hover {
     }
 
     .product-card {
-        width: 100%; /* Las tarjetas de producto ocupan todo el ancho */
+        width: 100%;
     }
 
     /* Las secciones laterales también se apilan en celulares */
@@ -520,9 +619,9 @@ nav ul li a:hover {
 
     .bazar-aside,
     .falulover-aside {
-        min-width: unset; /* Eliminar mínimo para que se adapten a 100% */
+        min-width: unset;
         width: 100%;
-        padding: 1rem; /* Ajustar padding */
+        padding: 1rem;
     }
 
     .bazar-aside h2,
@@ -533,7 +632,7 @@ nav ul li a:hover {
         font-size: 1rem;
     }
     .falulover-img {
-        width: 100px; /* Reducir tamaño de imagen de Falulover */
+        width: 100px;
         height: 100px;
     }
     .falulover-aside h3 {
@@ -543,6 +642,30 @@ nav ul li a:hover {
 
 /* Celulares pequeños (hasta 400px) */
 @media (max-width: 400px) {
+    .menu-toggle {
+        top: 15px; /* Ajuste para pantallas muy pequeñas */
+        left: 15px;
+        width: 35px;
+        height: 35px;
+    }
+    .hamburger,
+    .hamburger::before,
+    .hamburger::after {
+        height: 2px; /* Barras más delgadas */
+    }
+    .hamburger::before {
+        transform: translateY(-7px);
+    }
+    .hamburger::after {
+        transform: translateY(7px);
+    }
+    .menu-toggle.active .hamburger::before {
+        transform: rotate(45deg) translate(30px, -30px);
+    }
+    .menu-toggle.active .hamburger::after {
+        transform: rotate(-45deg) translate(30px, 30px);
+    }
+
     .sidebar nav ul li a {
         font-size: 0.85rem;
         padding: 0.3rem 0.6rem;

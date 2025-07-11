@@ -219,26 +219,70 @@ nav ul li a:hover {
   margin-top: 0.5rem;
 }
 
-/* Responsive */
+/* Responsive para móvil - mostrar hamburguesa y ocultar sidebar */
 @media (max-width: 900px) {
+  .hamburger-btn {
+    display: block;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background-color: var(--color-acento);
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    cursor: pointer;
+    z-index: 120;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -220px; /* oculto al inicio */
+    width: 220px;
+    height: 100vh;
+    background-color: var(--color-lila-suave);
+    padding: 2rem 1rem;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+    transition: left 0.3s ease;
+    z-index: 110;
+    overflow-y: auto;
+  }
+
+  .sidebar.active {
+    left: 0; /* visible cuando activo */
+  }
+
+  /* Main content ocupa todo el ancho en móvil */
   .main-content {
-    margin-left: 0;
+    margin-left: 0 !important;
     padding: 1rem;
   }
 
+  /* Layout 3 columnas en móvil es columna */
   .layout-3column {
     flex-direction: column;
   }
 
+  /* Info lateral se pone en fila en móvil para mejor uso */
   .info-lateral {
     flex-direction: row;
     gap: 1rem;
   }
 
+  /* Bazares y falulover flex 1 para que se adapten */
   .bazar-aside, .falulover-aside {
     flex: 1;
   }
 }
+
+/* Ocultar botón hamburguesa por defecto en escritorio */
+.hamburger-btn {
+  display: none;
+}
+
+/* Producto cards */
 .product-card {
   background-color: #fff;
   border-radius: 10px;
@@ -289,89 +333,9 @@ nav ul li a:hover {
   background-color: #f9d6d6;
   color: #c62828;
 }
+
 .anuncio-wsp {
   background-color: #fff8b5;
   padding: 1rem 1.5rem;
   margin-bottom: 2rem;
-  border-left: 6px solid var(--color-acento);
-  border-radius: 8px;
-  font-size: 1rem;
-  color: #333;
-  font-weight: 600;
-  animation: aparecer 1s ease-in-out;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-}
-
-.anuncio-wsp a.boton-wsp {
-  background-color: var(--color-acento);
-  color: white;
-  padding: 0.4rem 1rem;
-  border-radius: 20px;
-  margin-left: 1rem;
-  text-decoration: none;
-  font-size: 0.9rem;
-  transition: background-color 0.3s ease;
-}
-
-.anuncio-wsp a.boton-wsp:hover {
-  background-color: #ff40aa;
-}
-
-@keyframes aparecer {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-.producto-semana {
-  background-color: #fff2fb;
-  padding: 2rem;
-  border-radius: 12px;
-  margin-bottom: 2rem;
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
-}
-
-.producto-semana h2 {
-  color: var(--color-acento);
-  text-align: center;
-  margin-bottom: 1.5rem;
-  font-size: 1.6rem;
-}
-
-.producto-destacado {
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.producto-semana-img {
-  width: 250px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  object-fit: cover;
-}
-
-.producto-detalles {
-  flex: 1;
-  font-size: 1rem;
-}
-
-.producto-detalles h3 {
-  margin-bottom: 0.5rem;
-  color: #333;
-}
-
-.producto-detalles p {
-  margin: 0.4rem 0;
-}
-
-.precio-semana {
-  font-size: 1.3rem;
-  color: var(--color-acento);
-  font-weight: bold;
-}
+  border-left:

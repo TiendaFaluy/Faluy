@@ -1,301 +1,170 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
-/* Variables de color */
 :root {
-    --color-fondo: #ffe1f3;        /* Rosa muy suave para el fondo general del body y main-content */
-    --color-rosa-suave: #f5bdf9;   /* Rosa un poco más intenso, para acentos o hover */
-    --color-lila-suave: #e0b0ff;   /* Lila suave. ESTE ES EL COLOR QUE CAMBIAMOS DE AMARILLO. */
-    --color-acento: #ff65c3;       /* Rosa fucsia vibrante para títulos/enlaces activos */
-    --color-texto: #333333;        /* Gris oscuro para el texto principal */
-    --color-blanco-neutro: #ffffff;/* Blanco puro para fondos de secciones específicas si se necesita contraste total */
+  --color-fondo: #ffe1f3;
+  --color-rosa-suave: #f5bdf9;
+  --color-lila-suave: #fff8b5;
+  --color-acento: #ff65c3;
+  --color-texto: #333;
+  --color-blanco: #fff;
 }
 
-/* Reset básico y box-sizing */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: var(--color-fondo); /* Fondo general del BODY es rosa suave */
-    color: var(--color-texto);
-    margin: 0;
-    display: flex; /* Para el layout de sidebar y main-content en desktop */
-    min-height: 100vh;
-    overflow-x: hidden; /* Previene scroll horizontal no deseado */
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  line-height: 1.6;
 }
 
-/* --- Sidebar (Barra lateral en Desktop) --- */
-.sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 220px;
-    height: 100vh;
-    background-color: var(--color-lila-suave); /* El sidebar debería ser lila suave */
-    padding: 2rem 1rem;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
-    overflow-y: auto; /* Permite scroll si el contenido es largo */
-    z-index: 100;
-    transition: all 0.3s ease-in-out; /* Para transiciones suaves en responsive */
+/* NAVBAR ARRIBA */
+.navbar {
+  background-color: var(--color-lila-suave);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-.logo-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 2rem;
+.navbar .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 0.8rem;
 }
 
-.logo-img {
-    width: 40px;
-    height: auto;
+.navbar .logo img {
+  width: 40px;
+  height: auto;
 }
 
-.logo-text {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--color-acento);
+.navbar .logo span {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--color-acento);
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
+.navbar nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  gap: 0.7rem;
 }
 
-nav ul li {
-    margin: 1rem 0;
+.navbar nav ul li a {
+  text-decoration: none;
+  color: var(--color-texto);
+  background-color: var(--color-rosa-suave);
+  padding: 0.4rem 0.9rem;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
 }
 
-nav ul li a {
-    text-decoration: none;
-    color: var(--color-texto);
-    font-weight: 500;
-    display: block;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    transition: background-color 0.3s;
+.navbar nav ul li a:hover,
+.navbar nav ul li a.active {
+  background-color: var(--color-acento);
+  color: white;
 }
 
-nav ul li a.active,
-nav ul li a:hover {
-    background-color: var(--color-rosa-suave);
-    color: var(--color-acento);
+/* CONTENIDO PRINCIPAL */
+main {
+  padding: 1.5rem;
 }
 
-/* --- Contenido Principal --- */
-.main-content {
-    margin-left: 220px; /* Margen para la sidebar fija en desktop */
-    padding: 2rem;
-    flex: 1; /* Ocupa el espacio restante */
-    background-color: var(--color-fondo); /* El fondo del contenido principal también es rosa suave */
-    overflow-y: auto;
-    transition: margin-left 0.3s ease-in-out; /* Para transiciones suaves en responsive */
-}
-
-/* --- Banner Específico de "Sobre Nosotros" --- */
+/* BANNER */
 .banner {
-    width: 100%;
-    height: 300px; /* Altura predeterminada para desktop */
-    overflow: hidden;
-    border-radius: 12px;
-    margin-bottom: 2rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .banner img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
-    object-position: center; /* Centra la imagen */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: bannerZoom 12s ease-in-out infinite;
 }
 
-/* --- Sección Sobre Nosotros --- */
+@keyframes bannerZoom {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* SECCIÓN SOBRE NOSOTROS */
 .sobre-nosotros {
-    /* Aquí se aplica el degradado que incluye el lila (antes amarillo) y rosa suave */
-    background: linear-gradient(135deg, var(--color-lila-suave), var(--color-rosa-suave));
-    border-radius: 20px;
-    padding: 2rem;
-    box-shadow: 0 6px 20px rgba(255, 101, 195, 0.25);
-    max-width: 900px;
-    margin: 0 auto; /* Centrar en el contenido principal */
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
 }
 
-.sobre-nosotros h2 {
-    color: var(--color-acento);
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    text-align: center;
+.sobre-nosotros .texto {
+  flex: 1;
+  font-size: 1rem;
 }
 
-.sobre-nosotros p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 1.2rem;
-    color: var(--color-texto);
-    text-align: justify;
+.sobre-nosotros .texto h2 {
+  color: var(--color-acento);
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
 }
 
-.sobre-nosotros strong {
-    color: var(--color-acento);
+.sobre-nosotros .texto p {
+  margin-bottom: 1rem;
 }
 
-/* --- Sección Equipo --- */
-.team {
-    margin-top: 2rem;
-    text-align: center;
-    display: flex;
+.sobre-nosotros .imagen {
+  flex: 1;
+  text-align: center;
+}
+
+.sobre-nosotros .imagen img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* RESPONSIVO PARA CELULAR */
+@media (max-width: 768px) {
+  .navbar nav ul {
     flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-    padding: 1.5rem;
-    /* Fondo del equipo: ahora usa --color-blanco-neutro con transparencia */
-    background-color: rgba(255, 255, 255, 0.7); /* Blanco neutro con transparencia */
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    gap: 0.5rem;
+  }
+
+  .sobre-nosotros {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .sobre-nosotros .texto h2 {
+    font-size: 1.5rem;
+  }
+
+  .sobre-nosotros .imagen img {
+    max-width: 100%;
+  }
+
+  .banner {
+    height: 200px;
+  }
 }
 
-.team img {
-    width: 100%;
-    max-width: 600px; /* Ancho deseado en desktop */
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(194, 152, 184, 0.3);
-    margin-bottom: 1rem; /* Mantiene el margen inferior si el texto va debajo */
-}
-
-.team p {
-    font-style: italic;
-    font-size: 1.1rem;
-    color: var(--color-acento); /* Color del texto del equipo */
-    margin: 0; /* Elimina margen inferior extra */
-}
-
-
-/* --- Media Queries para Responsividad (Barra de Navegación Superior) --- */
-
-/* Tabletas y pantallas medianas (hasta 900px) */
-@media (max-width: 900px) {
-    body {
-        flex-direction: column; /* Apila el sidebar (ahora barra superior) y el contenido principal */
-    }
-
-    /* La sidebar se convierte en una barra superior */
-    .sidebar {
-        position: static; /* Ya no es fija en la izquierda */
-        width: 100%; /* Ocupa todo el ancho */
-        height: auto; /* Altura automática */
-        padding: 1rem;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Sombra en la parte inferior */
-        display: flex;
-        flex-direction: column; /* Apilar logo y navegación */
-        align-items: center; /* Centrar contenido */
-        z-index: 100; /* Asegurar que esté por encima de otros elementos si hay */
-    }
-
-    .logo-container {
-        margin-bottom: 1rem;
-        flex-direction: row; /* Mantener en fila para el logo y texto */
-        gap: 10px;
-    }
-    .logo-img {
-        width: 35px; /* Ligeramente más pequeño para móvil */
-    }
-    .logo-text {
-        font-size: 1.6rem;
-    }
-
-    .sidebar nav ul {
-        display: flex;
-        flex-wrap: wrap; /* Permitir que los ítems de navegación se envuelvan */
-        justify-content: center; /* Centrar ítems horizontalmente */
-        width: 100%; /* Asegurar que la lista ocupe el ancho completo */
-        gap: 0.5rem; /* Espacio entre los ítems de navegación */
-    }
-
-    .sidebar nav ul li {
-        margin: 0; /* Eliminar margen vertical */
-    }
-
-    .sidebar nav ul li a {
-        padding: 0.4rem 0.8rem; /* Ajustar padding */
-        font-size: 0.9rem; /* Ajustar tamaño de fuente */
-        white-space: nowrap; /* Evitar saltos de línea en los enlaces */
-    }
-
-    .main-content {
-        margin-left: 0; /* No hay sidebar fija, así que no hay margen */
-        padding: 1.5rem; /* Ajustar padding general */
-    }
-
-    .banner {
-        height: 250px; /* Reducir altura del banner en tablets */
-    }
-
-    .sobre-nosotros {
-        max-width: 100%; /* Ocupa todo el ancho disponible */
-        padding: 1.5rem;
-    }
-
-    .sobre-nosotros h2 {
-        font-size: 1.8rem;
-    }
-
-    .team img {
-        width: 100%; /* Asegura que la imagen no desborde */
-        max-width: 350px; /* Tamaño máximo en tablets */
-    }
-}
-
-/* Celulares (hasta 600px) */
-@media (max-width: 600px) {
-    .main-content {
-        padding: 1rem;
-    }
-
-    .banner {
-        height: 200px; /* Reducir altura del banner en móviles */
-    }
-
-    .sobre-nosotros {
-        padding: 1rem;
-    }
-
-    .sobre-nosotros h2 {
-        font-size: 1.6rem;
-    }
-
-    .sobre-nosotros p {
-        font-size: 0.95rem;
-    }
-
-    .team {
-        margin-top: 1.5rem;
-        padding: 1rem;
-    }
-
-    .team img {
-        width: 100%; /* Asegura que la imagen no desborde */
-        max-width: 250px; /* Tamaño máximo en móviles */
-    }
-}
-
-/* Celulares pequeños (hasta 400px) */
-@media (max-width: 400px) {
-    .sidebar nav ul li a {
-        font-size: 0.85rem;
-        padding: 0.3rem 0.6rem;
-    }
-    .banner {
-        height: 150px;
-    }
-    .sobre-nosotros h2 {
-        font-size: 1.4rem;
-    }
-    .sobre-nosotros p, .team p {
-        font-size: 0.9rem;
-    }
-}

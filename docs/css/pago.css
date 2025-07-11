@@ -21,11 +21,12 @@ body {
   color: var(--color-texto);
   margin: 0;
   display: flex;
+  flex-direction: row;
   min-height: 100vh;
   overflow-x: hidden;
 }
 
-/* Sidebar fijo a la izquierda */
+/* Sidebar fijo en escritorio */
 .sidebar {
   position: fixed;
   top: 0;
@@ -83,7 +84,7 @@ nav ul li a:hover {
   color: var(--color-acento);
 }
 
-/* Main content con margen izquierdo para el sidebar */
+/* Main content */
 .main-content {
   margin-left: 220px;
   padding: 2rem;
@@ -91,18 +92,29 @@ nav ul li a:hover {
   background-color: var(--color-fondo);
 }
 
-/* ---------------- MÉTODOS DE PAGO ---------------- */
+/* Banner */
+.banner {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 2rem auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+.banner img {
+  width: 100%;
+  display: block;
+}
 
+/* Métodos de pago */
 .pago-container {
   background: linear-gradient(135deg, var(--color-lila-suave), var(--color-rosa-suave));
   border-radius: 20px;
   padding: 2rem;
-  box-shadow: 0 4px 12px rgba(255, 101, 195, 0.2);
+  box-shadow: 0 6px 20px rgba(255, 101, 195, 0.25);
   max-width: 600px;
-   box-shadow: 0 6px 20px rgba(255, 101, 195, 0.25);
   margin: 0 auto;
   text-align: center;
-  
 }
 
 .titulo-pago {
@@ -111,7 +123,6 @@ nav ul li a:hover {
   margin-bottom: 2rem;
   text-align: center;
 }
-
 .titulo-pago span {
   font-weight: 700;
   font-size: 2.2rem;
@@ -120,33 +131,16 @@ nav ul li a:hover {
 .metodo {
   margin-bottom: 2.5rem;
 }
-
-.metodo-titulo {
-  background-color: var(--color-rosa-suave);
-  display: inline-block;
-  padding: 0.5rem 1.2rem;
-  border-radius: 20px;
-  color: var(--color-acento);
-  font-size: 1.1rem;
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
 .metodo img {
   width: 100px;
-  height: auto;
-  margin-bottom: 1rem;
+  margin: 0 auto 1rem auto;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
 }
-
 .nota {
   font-size: 0.9rem;
   color: var(--color-acento);
   margin-top: 0.5rem;
 }
-
 .lista-pago {
   list-style: none;
   padding: 0;
@@ -154,20 +148,103 @@ nav ul li a:hover {
   color: var(--color-texto);
   text-align: center;
 }
-
 .lista-pago li {
   font-size: 1rem;
   margin-bottom: 1rem;
   line-height: 1.4;
 }
-
 .lista-pago li strong {
   color: var(--color-acento);
 }
-
 .red {
   font-weight: bold;
   color: var(--color-acento);
   font-size: 1rem;
   margin-top: 2rem;
 }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  body {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+
+  .logo-container {
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+  }
+
+  nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0;
+    width: 100%;
+  }
+
+  nav ul li {
+    margin: 0;
+  }
+
+  nav ul li a {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+    white-space: nowrap;
+  }
+
+  .main-content {
+    margin-left: 0;
+    padding: 1.5rem;
+  }
+
+  .banner {
+    height: auto;
+    max-width: 100%;
+  }
+
+  .pago-container {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 500px) {
+  nav ul li a {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .titulo-pago {
+    font-size: 1.5rem;
+  }
+
+  .titulo-pago span {
+    font-size: 1.6rem;
+  }
+
+  .pago-container {
+    padding: 1rem;
+  }
+
+  .metodo img {
+    width: 80px;
+  }
+
+  .lista-pago li {
+    font-size: 0.95rem;
+  }
+}
+

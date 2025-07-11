@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Faluy | Moda y Tendencia</title>
-  <link rel="stylesheet" href="css/inicio.css" />
+  <title>Faluy | Cómo Llegar</title>
+  <link rel="stylesheet" href="css/comollegar.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -13,22 +13,24 @@
   />
 </head>
 <body>
-  <!-- Botón hamburguesa para móvil -->
-  <button class="hamburger-btn" aria-label="Abrir menú">☰</button>
-
   <aside class="sidebar">
     <div class="logo-container">
       <img src="imagenes/FALUY__3_-removebg-preview.png" alt="Logo Faluy" class="logo-img" />
       <h1 class="logo-text">Faluy</h1>
     </div>
+     <button class="hamburger" aria-label="Abrir menú">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
     <nav>
       <ul>
-        <li><a href="index.html" class="active">Inicio</a></li>
+        <li><a href="index.html">Inicio</a></li>
         <li><a href="sobrenosotros.html">Sobre Nosotros</a></li>
         <li><a href="envio.html">Métodos de Envío</a></li>
         <li><a href="pago.html">Métodos de Pago</a></li>
         <li><a href="reglas.html">Reglas de Compra</a></li>
-        <li><a href="comollegar.html">Cómo Llegar</a></li>
+        <li><a href="comollegar.html" class="active">Cómo Llegar</a></li>
         <li><a href="horario.html">Horario</a></li>
         <li><a href="contacto.html">Contáctanos</a></li>
       </ul>
@@ -36,103 +38,60 @@
   </aside>
 
   <main class="main-content">
-    <!-- Banner animado arriba -->
-    <section class="banner">
-      <img src="imagenes/Diseño sin título.png" alt="Banner Faluy" />
-    </section>
+    <h1 class="titulo-reglas">¿Cómo Llegar a Faluy?</h1>
 
-    <!-- Anuncio WhatsApp -->
-    <section class="anuncio-wsp">
-      <p>¿Aún no estás en el grupo? Todas las novedades, promociones y ventas flash te esperan en WhatsApp. 🌸✨
-        <a href="https://chat.whatsapp.com/DDS6I0vGwzZELj812IE4cK" class="boton-wsp">¡Únete YA!</a>
-      </p>
-    </section>
+    <section class="info-como-llegar">
+      <p>Encuentra nuestra tienda en La Chorrera fácilmente con las siguientes opciones. ¡Te esperamos!</p>
 
-    <!-- Producto de la Semana -->
-    <section class="producto-semana">
-      <h2>✨ Producto de la Semana ✨</h2>
-      <div class="producto-destacado">
-        <img src="imagenes/perfumes.jpeg" alt="Producto de la Semana" class="producto-semana-img" />
-        <div class="producto-detalles">
-          <h3>Dupe Sol de Janeiro</h3>
-          <p>"La magia de Sol de Janeiro… sin romper tu presupuesto. Descubre nuestros perfumes dupe que huelen como el paraíso tropical. ✨🌴"</p>
-          <p class="precio-semana">$6.00</p>
-        </div>
+      <!-- Google Maps embebido -->
+      <div class="mapa-container">
+     <iframe
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3567.3250754738947!2d-79.7802877!3d8.8774943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fac99d833491a8f%3A0x52b4a47c60be102d!2zRmFsdXnwn5Cl!5e1!3m2!1ses!2spa!4v1752152276190!5m2!1ses!2spa"
+  width="100%"
+  height="350"
+  style="border:0;"
+  allowfullscreen=""
+  loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade"
+  title="Mapa Faluy La Chorrera"
+></iframe>
+
+      <!-- Botones de Waze y google Maps -->
+      <div class="botones-mapas">
+        <a
+          href="https://embed.waze.com/iframe?zoom=16&lat=8.877494&lon=-79.780288&ct=livemap"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="boton-mapa"
+          >Abrir en Waze</a>
+           
+         <a
+          href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3567.3250754738947!2d-79.7802877!3d8.8774943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fac99d833491a8f%3A0x52b4a47c60be102d!2zRmFsdXnwn5Cl!5e1!3m2!1ses!2spa!4v1752152276190!5m2!1ses!2spa"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="boton-mapa"
+          >Abrir en Google Maps</a>
+           
+      </div>
+
+      <!-- Video de Instagram embebido -->
+      <div class="video-instagram">
+        <blockquote
+          class="instagram-media"
+          data-instgrm-permalink="https://www.instagram.com/reel/C6uYlVVrqxO/?utm_source=ig_web_copy_link&igsh=MWhsbXpxMHA3OWdnMQ=="
+          data-instgrm-version="14"
+          style=" background:#FFF; border:0; margin: 1rem auto; max-width:540px; width:100%; box-shadow: 0 4px 15px rgba(255, 182, 225, 0.2); border-radius: 16px;"
+          >
+          <div style="padding:16px;">
+            <a href="https://www.instagram.com/reel/C6uYlVVrqxO/?utm_source=ig_web_copy_link&igsh=MWhsbXpxMHA3OWdnMQ==" target="_blank" rel="noopener noreferrer" style="color:#000; font-weight:600; text-decoration:none;">Cómo llegar a Faluy La Chorrera</a>
+          </div>
+        </blockquote>
       </div>
     </section>
-
-    <!-- Layout principal 3 columnas -->
-    <div class="layout-3column">
-      <!-- Mercancía central -->
-      <section class="mercancia-central">
-        <h2>Mercancía Recién Llegada</h2>
-        <div class="grid">
-          <div class="product-card disponible">
-            <img src="imagenes/stich.png" alt="Producto 1" class="product-img" />
-            <div class="product-info">
-              <p><strong>Talla:</strong> S</p>
-              <p><strong>Precio:</strong> 12.00$</p>
-              <span class="estado">No Disponible</span>
-            </div>
-          </div>
-
-          <div class="product-card no-disponible">
-            <img src="imagenes/outfit.png" alt="Producto 2" class="product-img" />
-            <div class="product-info">
-              <p><strong>Body Talla:</strong> M</p>
-              <p><strong>Precio:</strong> 6.00$</p>
-              <p><strong>Short Talla:</strong> L</p>
-              <p><strong>Precio:</strong> 8.00$</p>
-              <span class="estado">No disponible</span>
-            </div>
-          </div>
-
-          <div class="product-card disponible">
-            <img src="imagenes/tops.png" alt="Producto 3" class="product-img" />
-            <div class="product-info">
-              <p><strong>Talla:</strong> L</p>
-              <p><strong>Precio:</strong> 5.00$</p>
-              <span class="estado">Disponible</span>
-            </div>
-          </div>
-
-          <div class="product-card no-disponible">
-            <img src="imagenes/vestido.png" alt="Producto 4" class="product-img" />
-            <div class="product-info">
-              <p><strong>Talla:</strong> M</p>
-              <p><strong>Precio:</strong> 12.00$</p>
-              <span class="estado">No disponible</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Columna derecha -->
-      <aside class="info-lateral">
-        <section class="bazar-aside">
-          <h2>Próximo Bazar</h2>
-          <p>Domingo 13 de Julio de 2025</p>
-          <img src="imagenes/bazar.png" alt="Próximo Bazar" class="bazar-img" />
-        </section>
-
-        <section class="falulover-aside">
-          <h2>Falulover del Mes</h2>
-          <img src="imagenes/perfil.png" alt="Falulover del Mes" class="falulover-img" />
-          <h3>Daniela R.</h3>
-          <p>Destacada por su estilo único, energía positiva y fidelidad a nuestros eventos 💕</p>
-        </section>
-      </aside>
-    </div>
   </main>
 
-  <script>
-    const btn = document.querySelector('.hamburger-btn');
-    const sidebar = document.querySelector('.sidebar');
-
-    btn.addEventListener('click', () => {
-      sidebar.classList.toggle('active');
-    });
-  </script>
+  <script async src="//www.instagram.com/embed.js"></script>
 </body>
 </html>
+
 

@@ -1,433 +1,561 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
 :root {
-  --color-fondo: #ffe1f3;
-  --color-rosa-suave: #f5bdf9;
-  --color-lila-suave: #fff8b5;
-  --color-acento: #ff65c3;
-  --color-texto: #333333;
-  --color-blanco: #ffccee;
+    --color-fondo: #ffe1f3;
+    --color-rosa-suave: #f5bdf9;
+    --color-lila-suave: #fff8b5;
+    --color-acento: #ff65c3;
+    --color-texto: #333333;
+    --color-blanco: #ffccee; /* Este color parece más un rosa claro que blanco puro */
+    --color-fondo-claro: #ffffff; /* Añadido un blanco más neutral para contenido */
 }
 
+/* Reset básico y box-sizing */
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
-  background-color: var(--color-fondo);
-  color: var(--color-texto);
-  margin: 0;
-  display: flex;
-  min-height: 100vh;
-  overflow-x: hidden;
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    margin: 0;
+    display: flex; /* Para el layout de sidebar y main-content */
+    min-height: 100vh;
+    overflow-x: hidden; /* Previene scroll horizontal no deseado */
 }
 
-/* Botón menú para móvil */
-.menu-toggle {
-  display: none;
-  position: fixed;
-  top: 1rem;
-  left: 1rem;
-  background: var(--color-acento);
-  border: none;
-  border-radius: 6px;
-  color: white;
-  font-size: 1.5rem;
-  padding: 0.4rem 0.8rem;
-  z-index: 110;
-  cursor: pointer;
-}
-
-/* Sidebar fijo en desktop */
+/* --- Sidebar --- */
+/* En escritorio, el sidebar es fijo */
 .sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 220px;
-  height: 100vh;
-  background-color: var(--color-lila-suave);
-  padding: 2rem 1rem;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
-  overflow-y: auto;
-  z-index: 100;
-  transition: left 0.3s ease;
-}
-
-.sidebar.active {
-  left: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 100vh;
+    background-color: var(--color-lila-suave);
+    padding: 2rem 1rem;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+    overflow-y: auto; /* Permite scroll si el contenido es largo */
+    z-index: 100;
 }
 
 .logo-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 2rem;
 }
 
 .logo-img {
-  width: 40px;
-  height: auto;
+    width: 40px;
+    height: auto;
 }
 
 .logo-text {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--color-acento);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-acento);
 }
 
 nav ul {
-  list-style: none;
-  padding: 0;
+    list-style: none;
+    padding: 0;
 }
 
 nav ul li {
-  margin: 1rem 0;
+    margin: 1rem 0;
 }
 
 nav ul li a {
-  text-decoration: none;
-  color: var(--color-texto);
-  font-weight: 500;
-  display: block;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  transition: background-color 0.3s;
+    text-decoration: none;
+    color: var(--color-texto);
+    font-weight: 500;
+    display: block;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s;
 }
 
 nav ul li a.active,
 nav ul li a:hover {
-  background-color: var(--color-rosa-suave);
-  color: var(--color-acento);
+    background-color: var(--color-rosa-suave);
+    color: var(--color-acento);
 }
 
+/* --- Contenido Principal --- */
+/* En escritorio, el main-content tiene margen para la sidebar */
 .main-content {
-  margin-left: 220px;
-  padding: 2rem;
-  flex: 1;
-  background-color: var(--color-fondo);
+    margin-left: 220px;
+    padding: 2rem;
+    flex: 1; /* Ocupa el espacio restante */
+    background-color: var(--color-fondo);
 }
 
-/* Banner */
+/* --- Banner Animado --- */
 .banner {
-  width: 100%;
-  height: 300px;
-  overflow: hidden;
-  border-radius: 12px;
-  margin-bottom: 2rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    position: relative;
 }
 
 .banner img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  animation: bannerZoom 12s ease-in-out infinite;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: bannerZoom 12s ease-in-out infinite;
 }
 
 @keyframes bannerZoom {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
 }
 
-/* Layout */
-.layout-3column {
-  display: flex;
-  gap: 2rem;
-  flex-wrap: nowrap;
-  align-items: flex-start;
-}
-
-.mercancia-central {
-  flex: 2;
-  background-color: var(--color-blanco);
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
-}
-
-.mercancia-central h2 {
-  color: var(--color-acento);
-  margin-bottom: 1rem;
-}
-
-.grid {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.product-img {
-  width: 100%;
-  max-width: 180px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(194, 152, 184, 0.3);
-  object-fit: cover;
-}
-
-/* Columna lateral */
-.info-lateral {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-/* Bazar */
-.bazar-aside {
-  background-color: var(--color-blanco);
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
-}
-
-.bazar-aside h2 {
-  color: var(--color-acento);
-  margin-bottom: 1rem;
-}
-
-.bazar-aside p {
-  font-size: 1.1rem;
-  margin-bottom: 1rem;
-  color: var(--color-texto);
-}
-
-.bazar-img {
-  width: 100%;
-  border-radius: 10px;
-  object-fit: cover;
-  box-shadow: 0 6px 15px rgba(194, 152, 184, 0.3);
-}
-
-/* Falulover */
-.falulover-aside {
-  background-color: var(--color-blanco);
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
-  text-align: center;
-}
-
-.falulover-aside h2 {
-  color: var(--color-acento);
-  margin-bottom: 1rem;
-}
-
-.falulover-img {
-  max-width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin: 0 auto 1rem auto;
-  box-shadow: 0 4px 12px rgba(242, 157, 206, 0.3);
-}
-
-.falulover-aside h3 {
-  margin: 0;
-  font-size: 1.2rem;
-  color: var(--color-texto);
-}
-
-.falulover-aside p {
-  color: #555;
-  font-size: 0.95rem;
-  margin-top: 0.5rem;
-}
-
-/* Tarjetas de productos */
-.product-card {
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 1rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  width: calc(50% - 0.5rem);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: transform 0.3s ease;
-}
-
-.product-card:hover {
-  transform: translateY(-4px);
-}
-
-.product-img {
-  width: 100%;
-  max-width: 150px;
-  height: auto;
-  border-radius: 8px;
-  object-fit: cover;
-  margin-bottom: 0.8rem;
-}
-
-.product-info {
-  text-align: center;
-  font-size: 0.95rem;
-}
-
-.estado {
-  display: inline-block;
-  margin-top: 0.5rem;
-  padding: 0.25rem 0.75rem;
-  border-radius: 8px;
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-
-.disponible .estado {
-  background-color: #d6f5d6;
-  color: #2e7d32;
-}
-
-.no-disponible .estado {
-  background-color: #f9d6d6;
-  color: #c62828;
-}
-
-/* Anuncio WhatsApp */
+/* --- Anuncio WhatsApp --- */
 .anuncio-wsp {
-  background-color: #fff8b5;
-  padding: 1rem 1.5rem;
-  margin-bottom: 2rem;
-  border-left: 6px solid var(--color-acento);
-  border-radius: 8px;
-  font-size: 1rem;
-  color: #333;
-  font-weight: 600;
-  animation: aparecer 1s ease-in-out;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    background-color: var(--color-lila-suave); /* Usando tu variable */
+    padding: 1rem 1.5rem;
+    margin-bottom: 2rem;
+    border-left: 6px solid var(--color-acento);
+    border-radius: 8px;
+    font-size: 1rem;
+    color: var(--color-texto);
+    font-weight: 600;
+    animation: aparecer 1s ease-in-out;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    display: flex; /* Para alinear el texto y el botón */
+    flex-wrap: wrap; /* Permite que el botón salte de línea en móviles */
+    align-items: center;
+    justify-content: center; /* Centrar contenido */
+    text-align: center;
+}
+
+.anuncio-wsp p {
+    margin-bottom: 0; /* Eliminar margen si es flex */
+    flex-grow: 1; /* Permite que el párrafo ocupe el espacio */
 }
 
 .anuncio-wsp a.boton-wsp {
-  background-color: var(--color-acento);
-  color: white;
-  padding: 0.4rem 1rem;
-  border-radius: 20px;
-  margin-left: 1rem;
-  text-decoration: none;
-  font-size: 0.9rem;
-  transition: background-color 0.3s ease;
+    background-color: var(--color-acento);
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    margin-left: 1rem;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+    white-space: nowrap; /* Evita que el texto del botón se rompa */
 }
 
 .anuncio-wsp a.boton-wsp:hover {
-  background-color: #ff40aa;
+    background-color: #ff40aa;
 }
 
 @keyframes aparecer {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* Producto de la semana */
+/* --- Producto de la Semana --- */
 .producto-semana {
-  background-color: #fff2fb;
-  padding: 2rem;
-  border-radius: 12px;
-  margin-bottom: 2rem;
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+    background-color: #fff2fb; /* Usa un color específico aquí o una variable más apropiada */
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
 }
 
 .producto-semana h2 {
-  color: var(--color-acento);
-  text-align: center;
-  margin-bottom: 1.5rem;
-  font-size: 1.6rem;
+    color: var(--color-acento);
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.6rem;
 }
 
 .producto-destacado {
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-  flex-wrap: wrap;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    flex-wrap: wrap; /* Permitir que los elementos se envuelvan */
+    justify-content: center; /* Centrar elementos cuando se envuelvan */
+    text-align: center; /* Centrar texto si se apila */
 }
 
 .producto-semana-img {
-  width: 250px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  object-fit: cover;
+    width: 250px;
+    max-width: 100%; /* Asegura que no desborde en pantallas pequeñas */
+    height: auto; /* Mantiene la proporción */
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    object-fit: cover;
 }
 
 .producto-detalles {
-  flex: 1;
-  font-size: 1rem;
+    flex: 1;
+    font-size: 1rem;
+    /* Eliminar text-align: left; si el contenedor padre es center */
+    /* text-align: left; /* Si quieres que el texto quede alineado a la izquierda */
 }
 
 .producto-detalles h3 {
-  margin-bottom: 0.5rem;
-  color: #333;
+    margin-bottom: 0.5rem;
+    color: #333;
 }
 
 .producto-detalles p {
-  margin: 0.4rem 0;
+    margin: 0.4rem 0;
 }
 
 .precio-semana {
-  font-size: 1.3rem;
-  color: var(--color-acento);
-  font-weight: bold;
+    font-size: 1.3rem;
+    color: var(--color-acento);
+    font-weight: bold;
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-  .menu-toggle {
-    display: block;
-  }
+/* --- Layout 3 columnas: mercancia + info lateral --- */
+.layout-3column {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap; /* Permite que las columnas se envuelvan */
+    align-items: flex-start;
+}
 
-  .sidebar {
-    left: -260px;
-  }
+/* Mercancía central grande */
+.mercancia-central {
+    flex: 2; /* Prioridad de tamaño en escritorio */
+    min-width: 400px; /* Ancho mínimo para mantener el grid en escritorio antes de envolver */
+    background-color: var(--color-fondo-claro); /* Usando el nuevo color de fondo más neutral */
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
 
-  .sidebar.active {
-    left: 0;
-  }
-
-  .main-content {
-    margin-left: 0;
-    padding: 1rem;
-  }
-
-  .layout-3column {
-    flex-direction: column;
-  }
-
-  .info-lateral {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .bazar-aside,
-  .falulover-aside {
-    flex: 1;
-    width: 100%;
-  }
-
-  .producto-semana-img {
-    width: 100%;
-    max-width: 100%;
+.mercancia-central h2 {
+    color: var(--color-acento);
     margin-bottom: 1rem;
-  }
-
-  .producto-detalles {
-    font-size: 0.95rem;
-  }
-
-  .product-card {
-    width: 100% !important;
-  }
-
-  .grid {
-    justify-content: center;
-  }
+    text-align: center;
 }
 
+.grid {
+    display: grid; /* Usar grid para un mejor control del layout de productos */
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* 2-3 columnas en escritorio, adaptable */
+    gap: 1rem;
+}
+
+.product-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease;
+    text-align: center; /* Asegura que el texto esté centrado */
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+}
+
+.product-img {
+    width: 100%;
+    max-width: 150px; /* Ajustado para mejor visualización en las tarjetas */
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-bottom: 0.8rem;
+}
+
+.product-info {
+    font-size: 0.95rem;
+}
+
+.estado {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* Estado Disponible */
+.disponible .estado {
+    background-color: #d6f5d6;
+    color: #2e7d32;
+}
+
+/* Estado No Disponible */
+.no-disponible .estado {
+    background-color: #f9d6d6;
+    color: #c62828;
+}
+
+/* --- Columna derecha con bazar y falulover --- */
+.info-lateral {
+    flex: 1; /* Ocupa el espacio restante en escritorio */
+    min-width: 300px; /* Ancho mínimo para mantener el diseño en escritorio */
+    display: flex;
+    flex-direction: column; /* Apila las secciones dentro de info-lateral */
+    gap: 2rem;
+}
+
+.bazar-aside,
+.falulover-aside {
+    background-color: var(--color-fondo-claro); /* Usando el nuevo color de fondo más neutral */
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+    text-align: center; /* Centrar contenido de las asides */
+}
+
+.bazar-aside h2,
+.falulover-aside h2 {
+    color: var(--color-acento);
+    margin-bottom: 1rem;
+}
+
+.bazar-aside p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--color-texto);
+}
+
+.bazar-img {
+    width: 100%;
+    max-height: 250px; /* Limitar la altura de la imagen del bazar */
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 6px 15px rgba(194, 152, 184, 0.3);
+}
+
+/* Falulover del mes */
+.falulover-img {
+    max-width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 1rem auto;
+    box-shadow: 0 4px 12px rgba(242, 157, 206, 0.3);
+}
+
+.falulover-aside h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--color-texto);
+}
+
+.falulover-aside p {
+    color: #555;
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+}
+
+/* --- Media Queries para Responsividad --- */
+
+/* Tabletas y pantallas medianas (hasta 900px) */
+@media (max-width: 900px) {
+    body {
+        flex-direction: column; /* Apila el sidebar y el contenido principal */
+    }
+
+    /* La sidebar se convierte en una barra superior */
+    .sidebar {
+        position: static; /* Ya no es fija */
+        width: 100%; /* Ocupa todo el ancho */
+        height: auto; /* Altura automática */
+        padding: 1rem;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        display: flex;
+        flex-direction: column; /* Apilar logo y navegación */
+        align-items: center; /* Centrar contenido */
+    }
+
+    .logo-container {
+        margin-bottom: 1rem;
+        flex-direction: row; /* Mantener en fila para el logo y texto */
+        gap: 10px;
+    }
+    .logo-img {
+        width: 35px; /* Ligeramente más pequeño para móvil */
+    }
+    .logo-text {
+        font-size: 1.6rem;
+    }
+
+    .sidebar nav ul {
+        display: flex;
+        flex-wrap: wrap; /* Permitir que los ítems de navegación se envuelvan */
+        justify-content: center; /* Centrar ítems horizontalmente */
+        width: 100%; /* Asegurar que la lista ocupe el ancho completo */
+        gap: 0.5rem; /* Espacio entre los ítems de navegación */
+    }
+
+    .sidebar nav ul li {
+        margin: 0; /* Eliminar margen vertical */
+    }
+
+    .sidebar nav ul li a {
+        padding: 0.4rem 0.8rem; /* Ajustar padding */
+        font-size: 0.9rem; /* Ajustar tamaño de fuente */
+        white-space: nowrap; /* Evitar saltos de línea en los enlaces */
+    }
+
+    .main-content {
+        margin-left: 0; /* No hay sidebar fija, así que no hay margen */
+        padding: 1.5rem; /* Ajustar padding general */
+    }
+
+    /* Las columnas principales se apilan */
+    .layout-3column {
+        flex-direction: column;
+        gap: 1.5rem; /* Espacio entre las secciones apiladas */
+    }
+
+    .mercancia-central,
+    .info-lateral {
+        min-width: unset; /* Eliminar ancho mínimo */
+        width: 100%; /* Ocupa el 100% del ancho disponible */
+    }
+
+    /* Las secciones de info lateral (Bazar, Falulover) se ponen en fila en tablets */
+    .info-lateral {
+        flex-direction: row;
+        gap: 1.5rem;
+        flex-wrap: wrap; /* Si hay espacio se quedan en fila, si no, se envuelven */
+    }
+
+    .bazar-aside,
+    .falulover-aside {
+        flex: 1; /* Distribuyen el espacio equitativamente */
+        min-width: 250px; /* Mínimo ancho para que no se compriman demasiado */
+    }
+
+    .product-card {
+        width: calc(50% - 0.5rem); /* Mantener 2 columnas de productos */
+    }
+}
+
+/* Celulares (hasta 600px) */
+@media (max-width: 600px) {
+    .main-content {
+        padding: 1rem;
+    }
+
+    .banner {
+        height: 200px; /* Reducir altura del banner */
+    }
+
+    /* El anuncio de WhatsApp se apila */
+    .anuncio-wsp {
+        flex-direction: column;
+        align-items: center;
+    }
+    .anuncio-wsp p {
+        margin-bottom: 0.8rem; /* Espacio entre el texto y el botón */
+    }
+    .anuncio-wsp a.boton-wsp {
+        margin-left: 0; /* Eliminar margen si se apila */
+        width: 80%; /* Hacer el botón un poco más ancho */
+        text-align: center;
+    }
+
+    .producto-semana h2 {
+        font-size: 1.4rem;
+    }
+
+    /* El producto destacado se apila */
+    .producto-destacado {
+        flex-direction: column;
+    }
+
+    .producto-semana-img {
+        width: 200px; /* Reducir tamaño de la imagen destacada */
+    }
+
+    .producto-detalles h3 {
+        font-size: 1.4rem;
+    }
+
+    .producto-detalles p {
+        font-size: 0.9rem;
+    }
+
+    .precio-semana {
+        font-size: 1.1rem;
+    }
+
+    .mercancia-central h2 {
+        font-size: 1.4rem;
+    }
+
+    /* Los productos en la cuadrícula se muestran en una sola columna */
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-card {
+        width: 100%; /* Las tarjetas de producto ocupan todo el ancho */
+    }
+
+    /* Las secciones laterales también se apilan en celulares */
+    .info-lateral {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .bazar-aside,
+    .falulover-aside {
+        min-width: unset; /* Eliminar mínimo para que se adapten a 100% */
+        width: 100%;
+        padding: 1rem; /* Ajustar padding */
+    }
+
+    .bazar-aside h2,
+    .falulover-aside h2 {
+        font-size: 1.2rem;
+    }
+    .bazar-aside p {
+        font-size: 1rem;
+    }
+    .falulover-img {
+        width: 100px; /* Reducir tamaño de imagen de Falulover */
+        height: 100px;
+    }
+    .falulover-aside h3 {
+        font-size: 1.1rem;
+    }
+}
+
+/* Celulares pequeños (hasta 400px) */
+@media (max-width: 400px) {
+    .sidebar nav ul li a {
+        font-size: 0.85rem;
+        padding: 0.3rem 0.6rem;
+    }
+    .banner {
+        height: 150px;
+    }
+    .anuncio-wsp {
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
+    }
+    .boton-wsp {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.7rem;
+    }
+}

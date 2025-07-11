@@ -21,12 +21,11 @@ body {
   color: var(--color-texto);
   margin: 0;
   display: flex;
-  justify-content: center;  /* centra el contenido horizontalmente */
   min-height: 100vh;
   overflow-x: hidden;
 }
 
-/* Sidebar fijo a la izquierda */
+/* --- Sidebar fija a la izquierda (modo escritorio) --- */
 .sidebar {
   position: fixed;
   top: 0;
@@ -38,6 +37,7 @@ body {
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
   overflow-y: auto;
   z-index: 100;
+  transition: all 0.3s ease;
 }
 
 .logo-container {
@@ -84,32 +84,27 @@ nav ul li a:hover {
   color: var(--color-acento);
 }
 
-/* Main content con margen para el sidebar y centrado */
+/* --- Contenido principal --- */
 .main-content {
   margin-left: 220px;
   padding: 2rem;
   background-color: var(--color-fondo);
-  min-height: 100vh;
   max-width: 900px;
   width: 100%;
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* centra el contenido interno */
   color: var(--color-texto);
 }
 
-/* Estilo titulo principal */
+/* Título */
 .titulo-reglas {
   font-size: 2rem;
   color: var(--color-acento);
   margin-bottom: 2rem;
   text-align: center;
   font-weight: 700;
-  width: 100%;
 }
 
-/* Contenedor vertical de reglas */
+/* Contenedor de reglas */
 .reglas-container {
   display: flex;
   flex-direction: column;
@@ -117,11 +112,9 @@ nav ul li a:hover {
   width: 100%;
 }
 
-/* Caja individual de regla centrada */
+/* Caja individual */
 .regla-box {
-  max-width: 700px;
-  margin: 0 auto;
-  background-color: #ffffff;
+  background-color: #fff;
   border-radius: 16px;
   padding: 2rem;
   box-shadow: 0 4px 15px rgba(255, 182, 225, 0.2);
@@ -159,7 +152,6 @@ nav ul li a:hover {
   list-style: "🌸 ";
 }
 
-/* Alerta destacada */
 .alerta {
   background-color: #ffe5ef;
   padding: 0.8rem 1rem;
@@ -170,7 +162,6 @@ nav ul li a:hover {
   margin-top: 1rem;
 }
 
-/* Notas */
 .nota {
   background-color: #fff8b5;
   padding: 0.7rem 1rem;
@@ -181,28 +172,79 @@ nav ul li a:hover {
   font-weight: 500;
 }
 
-/* Tag estilo nota */
 .tag {
   color: var(--color-acento);
   font-weight: bold;
 }
 
-/* Responsive para móviles */
+/* --- RESPONSIVE --- */
 @media (max-width: 900px) {
   body {
-    justify-content: flex-start;
+    flex-direction: column;
   }
+
+  .sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .logo-container {
+    margin-bottom: 1rem;
+  }
+
+  nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  nav ul li {
+    margin: 0;
+  }
+
+  nav ul li a {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+    white-space: nowrap;
+  }
+
   .main-content {
     margin-left: 0;
-    max-width: 100%;
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-content {
     padding: 1rem;
   }
 
-  .reglas-container {
-    max-width: 100%;
+  .titulo-reglas {
+    font-size: 1.6rem;
   }
 
   .regla-box {
-    max-width: 100%;
+    padding: 1.2rem;
+  }
+
+  .regla-box h2 {
+    font-size: 1.2rem;
+  }
+
+  .regla-box p,
+  .regla-box ul {
+    font-size: 0.95rem;
+  }
+
+  nav ul li a {
+    font-size: 0.85rem;
   }
 }
+

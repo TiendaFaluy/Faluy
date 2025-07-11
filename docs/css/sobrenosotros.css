@@ -19,7 +19,7 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: var(--color-fondo);
+    background-color: var(--color-texto);
     color: var(--color-texto);
     margin: 0;
     display: flex; /* Para el layout de sidebar y main-content en desktop */

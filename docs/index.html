@@ -10,8 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <!-- Botón de menú para móvil -->
-  <button class="menu-toggle" aria-label="Abrir menú">&#9776;</button>
+ 
 
   <aside class="sidebar">
     <div class="logo-container">
@@ -57,20 +56,7 @@
   </main>
 
   <!-- Script para abrir/cerrar sidebar -->
-  <script>
-    const menuToggle = document.querySelector('.menu-toggle');
-    const sidebar = document.querySelector('.sidebar');
-
-    menuToggle.addEventListener('click', () => {
-      sidebar.classList.toggle('active');
-    });
-
-    window.addEventListener('click', (e) => {
-      if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
-        sidebar.classList.remove('active');
-      }
-    });
-  </script>
+ 
 </body>
 </html>
 

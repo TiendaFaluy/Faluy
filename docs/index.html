@@ -13,14 +13,15 @@
   />
 </head>
 <body>
-  <!-- Botón hamburguesa para móvil -->
-  <button class="hamburger-btn" aria-label="Abrir menú">☰</button>
-
   <aside class="sidebar">
     <div class="logo-container">
       <img src="imagenes/FALUY__3_-removebg-preview.png" alt="Logo Faluy" class="logo-img" />
       <h1 class="logo-text">Faluy</h1>
     </div>
+
+    <!-- Botón hamburguesa -->
+    <button class="menu-toggle" aria-label="Abrir menú">&#9776;</button>
+
     <nav>
       <ul>
         <li><a href="index.html" class="active">Inicio</a></li>
@@ -61,7 +62,7 @@
       </div>
     </section>
 
-    <!-- Layout principal 3 columnas -->
+    <!-- Layout principal 3 columnas: mercancia central + bazar y falulover derecha -->
     <div class="layout-3column">
       <!-- Mercancía central -->
       <section class="mercancia-central">
@@ -107,7 +108,7 @@
         </div>
       </section>
 
-      <!-- Columna derecha -->
+      <!-- Columna derecha con bazar arriba y falulover abajo -->
       <aside class="info-lateral">
         <section class="bazar-aside">
           <h2>Próximo Bazar</h2>
@@ -126,12 +127,21 @@
   </main>
 
   <script>
-    const btn = document.querySelector('.hamburger-btn');
+    const menuToggle = document.querySelector('.menu-toggle');
     const sidebar = document.querySelector('.sidebar');
+    const mainContent = document.querySelector('.main-content');
 
-    btn.addEventListener('click', () => {
+    menuToggle.addEventListener('click', () => {
       sidebar.classList.toggle('active');
+
+      // Opcional: bloquear clicks fuera del menú cuando está abierto
+      if (sidebar.classList.contains('active')) {
+        mainContent.style.pointerEvents = 'none';
+      } else {
+        mainContent.style.pointerEvents = 'auto';
+      }
     });
   </script>
 </body>
 </html>
+

@@ -13,6 +13,8 @@
   />
 </head>
 <body>
+  <button class="hamburger-btn" aria-label="Abrir menú">☰</button>
+
   <aside class="sidebar">
     <div class="logo-container">
       <img src="imagenes/FALUY__3_-removebg-preview.png" alt="Logo Faluy" class="logo-img" />
@@ -91,6 +93,15 @@
   </main>
 
   <script async src="//www.instagram.com/embed.js"></script>
+  <script>
+  const btn = document.querySelector('.hamburger-btn');
+  const sidebar = document.querySelector('.sidebar');
+
+  btn.addEventListener('click', () => {
+    sidebar.classList.toggle('active');
+  });
+</script>
+
 </body>
 </html>
 

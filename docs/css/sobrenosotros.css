@@ -2,13 +2,12 @@
 
 /* Variables de color */
 :root {
-    --color-fondo: #ffe1f3;        /* Rosa muy suave */
-    --color-rosa-suave: #f5bdf9;   /* Rosa un poco más intenso */
-    --color-lila-suave: #e0b0ff;   /* **Lila suave (AJUSTADO PARA EVITAR EL AMARILLO)** */
-    --color-acento: #ff65c3;       /* Rosa fucsia vibrante */
+    --color-fondo: #ffe1f3;        /* Rosa muy suave para el fondo general del body y main-content */
+    --color-rosa-suave: #f5bdf9;   /* Rosa un poco más intenso, para acentos o hover */
+    --color-lila-suave: #e0b0ff;   /* Lila suave. ESTE ES EL COLOR QUE CAMBIAMOS DE AMARILLO. */
+    --color-acento: #ff65c3;       /* Rosa fucsia vibrante para títulos/enlaces activos */
     --color-texto: #333333;        /* Gris oscuro para el texto principal */
-    --color-blanco: #ffccee;       /* Blanco rosado, similar al fondo pero más claro */
-    --color-fondo-claro: #ffffff;  /* Blanco puro para fondos de secciones */
+    --color-blanco-neutro: #ffffff;/* Blanco puro para fondos de secciones específicas si se necesita contraste total */
 }
 
 /* Reset básico y box-sizing */
@@ -20,7 +19,7 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: var(--color-fondo);
+    background-color: var(--color-fondo); /* Fondo general del BODY es rosa suave */
     color: var(--color-texto);
     margin: 0;
     display: flex; /* Para el layout de sidebar y main-content en desktop */
@@ -35,7 +34,7 @@ body {
     left: 0;
     width: 220px;
     height: 100vh;
-    background-color: var(--color-lila-suave); /* Ahora será lila suave */
+    background-color: var(--color-lila-suave); /* El sidebar debería ser lila suave */
     padding: 2rem 1rem;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
     overflow-y: auto; /* Permite scroll si el contenido es largo */
@@ -92,7 +91,7 @@ nav ul li a:hover {
     margin-left: 220px; /* Margen para la sidebar fija en desktop */
     padding: 2rem;
     flex: 1; /* Ocupa el espacio restante */
-    background-color: var(--color-fondo); /* Fondo del contenido principal */
+    background-color: var(--color-fondo); /* El fondo del contenido principal también es rosa suave */
     overflow-y: auto;
     transition: margin-left 0.3s ease-in-out; /* Para transiciones suaves en responsive */
 }
@@ -117,7 +116,7 @@ nav ul li a:hover {
 
 /* --- Sección Sobre Nosotros --- */
 .sobre-nosotros {
-    /* Usando tu linear-gradient, ahora con un lila real */
+    /* Aquí se aplica el degradado que incluye el lila (antes amarillo) y rosa suave */
     background: linear-gradient(135deg, var(--color-lila-suave), var(--color-rosa-suave));
     border-radius: 20px;
     padding: 2rem;
@@ -154,7 +153,8 @@ nav ul li a:hover {
     align-items: center;
     gap: 1.5rem;
     padding: 1.5rem;
-    background-color: rgba(255, 255, 255, 0.5); /* Ligeramente translúcido para que se vea el gradiente de fondo */
+    /* Fondo del equipo: ahora usa --color-blanco-neutro con transparencia */
+    background-color: rgba(255, 255, 255, 0.7); /* Blanco neutro con transparencia */
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
@@ -295,10 +295,6 @@ nav ul li a:hover {
     .sobre-nosotros h2 {
         font-size: 1.4rem;
     }
-    .sobre-nosotros p, .team p {
-        font-size: 0.9rem;
-    }
-}
     .sobre-nosotros p, .team p {
         font-size: 0.9rem;
     }

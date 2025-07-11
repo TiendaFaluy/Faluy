@@ -19,7 +19,7 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: var(--color-texto);
+    background-color: var(--color-fondo);
     color: var(--color-texto);
     margin: 0;
     display: flex; /* Para el layout de sidebar y main-content en desktop */
@@ -298,4 +298,3 @@ nav ul li a:hover {
         font-size: 0.9rem;
     }
 }
-

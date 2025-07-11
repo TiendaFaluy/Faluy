@@ -13,6 +13,8 @@
   />
 </head>
 <body>
+  <button class="menu-toggle" aria-label="Abrir menú">&#9776;</button>
+
   <aside class="sidebar">
     <div class="logo-container">
       <img src="imagenes/FALUY__3_-removebg-preview.png" alt="Logo Faluy" class="logo-img" />
@@ -124,6 +126,23 @@
       </aside>
     </div>
   </main>
+  <script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const sidebar = document.querySelector('.sidebar');
+
+  menuToggle.addEventListener('click', () => {
+    sidebar.classList.toggle('active');
+  });
+
+  // Opcional: cerrar sidebar al clicar fuera en móvil
+  window.addEventListener('click', (e) => {
+    if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+      sidebar.classList.remove('active');
+    }
+  });
+</script>
+
 </body>
 </html>
+
 
